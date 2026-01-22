@@ -12,6 +12,7 @@ class RegisterSchema(Schema):
     password = fields.Str(required=True, validate=validate.Length(min=8))
     first_name = fields.Str()
     last_name = fields.Str()
+    role = fields.Str(validate=validate.OneOf(['user', 'admin']))
 
 
 class LoginSchema(Schema):
@@ -28,7 +29,8 @@ def register(data):
     user = User(
         email=data['email'],
         first_name=data.get('first_name'),
-        last_name=data.get('last_name')
+        last_name=data.get('last_name'),
+        role=data.get('role', 'user')
     )
     user.set_password(data['password'])
     

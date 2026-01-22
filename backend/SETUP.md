@@ -116,6 +116,33 @@ python run.py
 
 The server will start on `http://localhost:5000`
 
+### Step 9: Seed Default Admin & Customer Accounts
+
+After the first successful run you can create sample users for the front‑end demos:
+
+```python
+python
+>>> from app import create_app
+>>> from app.models import db, User
+>>> app = create_app()
+>>> app.app_context().push()
+
+# Admin
+>>> admin = User(email="admin@katcheri.com", first_name="Site", last_name="Admin", role="admin")
+>>> admin.set_password("AdminPass123!")
+>>> db.session.add(admin)
+
+# Customer
+>>> member = User(email="jaya@katcheri.com", first_name="Jaya", last_name="Nair", role="user")
+>>> member.set_password("MemberPass123!")
+>>> db.session.add(member)
+
+>>> db.session.commit()
+>>> exit()
+```
+
+You can adjust the emails/passwords later; these defaults simply allow the frontend login flows to work immediately.
+
 ## Troubleshooting
 
 ### Python Not Found

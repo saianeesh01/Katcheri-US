@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { format } from 'date-fns'
-import { motion } from 'framer-motion'
+import { SpotlightCard, StarBorder } from '@appletosolutions/reactbits'
 
 interface Event {
   id: number
@@ -20,28 +20,24 @@ export default function EventCard({ event }: EventCardProps) {
   const eventDate = new Date(event.start_datetime)
   
   return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2 }}
-      className="card overflow-hidden"
-    >
+    <SpotlightCard className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/40 bg-primary/80 p-0 shadow-lg shadow-primary/20 backdrop-blur-md transition">
       {event.cover_image_url && (
         <img
           src={event.cover_image_url}
           alt={event.title}
-          className="w-full h-48 object-cover"
+          className="h-48 w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       )}
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6 text-white">
         <h3 className="text-xl font-heading font-semibold mb-2">
-          <Link to={`/events/${event.slug}`} className="hover:text-primary">
+          <Link to={`/events/${event.slug}`} className="hover:text-white">
             {event.title}
           </Link>
         </h3>
         {event.subtitle && (
-          <p className="text-gray-600 mb-2">{event.subtitle}</p>
+          <p className="text-white/80 mb-2">{event.subtitle}</p>
         )}
-        <div className="text-sm text-gray-500 space-y-1">
+        <div className="text-sm text-white/70 space-y-1">
           <p className="flex items-center">
             <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -58,14 +54,17 @@ export default function EventCard({ event }: EventCardProps) {
             </p>
           )}
         </div>
-        <Link
+        <StarBorder
+          as={Link}
           to={`/events/${event.slug}`}
-          className="mt-4 inline-block btn-primary"
+          color="rgba(255, 255, 255, 0.6)"
+          speed="2.4s"
+          className="mt-6 inline-flex w-fit items-center rounded-full bg-white/90 px-6 py-2 text-sm font-semibold text-primary shadow-md shadow-black/20 transition hover:-translate-y-0.5 hover:bg-white"
         >
           View Details
-        </Link>
+        </StarBorder>
       </div>
-    </motion.div>
+    </SpotlightCard>
   )
 }
 

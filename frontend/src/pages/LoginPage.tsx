@@ -31,8 +31,12 @@ export default function LoginPage() {
   const onSubmit = async (data: LoginFormData) => {
     setError(null)
     try {
-      await dispatch(login(data)).unwrap()
-      navigate('/account')
+      const result = await dispatch(login(data)).unwrap()
+      if (result.user.role === 'admin') {
+        navigate('/admin', { replace: true })
+      } else {
+        navigate('/account', { replace: true })
+      }
     } catch (err: any) {
       setError(err.message || 'Login failed. Please check your credentials.')
     }

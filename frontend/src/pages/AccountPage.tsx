@@ -33,6 +33,11 @@ export default function AccountPage() {
       return
     }
 
+    if (user.role === 'admin') {
+      navigate('/admin')
+      return
+    }
+
     api
       .get('/orders')
       .then((response) => {
