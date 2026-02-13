@@ -10,3 +10,5 @@ SQLAlchemy
 alembic
 marshmallow
 APScheduler
+gunicorn
+psycopg2-binary
