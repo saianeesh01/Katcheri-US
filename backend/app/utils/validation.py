@@ -22,6 +22,6 @@ def validate_request(schema_class):
 
 # Common validation schemas
 class PaginationSchema(Schema):
-    page = fields.Int(missing=1, validate=validate.Range(min=1))
-    per_page = fields.Int(missing=20, validate=validate.Range(min=1, max=100))
+    page = fields.Int(load_default=1, validate=validate.Range(min=1))
+    per_page = fields.Int(load_default=20, validate=validate.Range(min=1, max=100))
 
