@@ -17,7 +17,7 @@
     "@hookform/resolvers": "^3.3.2",
     "@react-three/drei": "^9.56.26",
     "@react-three/fiber": "^8.15.16",
-    "@react-three/postprocessing": "^3.0.4",
+    "@react-three/postprocessing": "^2.16.0",
     "@reduxjs/toolkit": "^2.0.1",
     "axios": "^1.6.2",
     "date-fns": "^2.30.0",
