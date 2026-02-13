@@ -48,5 +48,9 @@
     "tailwindcss": "^3.3.6",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
+  },
+  "overrides": {
+    "three": "^0.157.0",
+    "@react-three/fiber": "^8.15.16"
   }
 }
