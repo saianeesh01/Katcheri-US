@@ -19,7 +19,7 @@ class Config:
     
     # Database connection
     SQLALCHEMY_DATABASE_URI = (
-        os.environ.get('DATABASE_URL')
+        os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') if os.environ.get('DATABASE_URL') else None
         or os.environ.get('SQLSERVER_CONN')
         or f'sqlite:///{DEFAULT_SQLITE_PATH}'
     )
