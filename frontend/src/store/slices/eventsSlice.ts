@@ -43,7 +43,7 @@ interface EventsState {
 }
 
 const initialState: EventsState = {
-  events: mockEvents.map((event) => ({ ...event })),
+  events: mockEvents.map((event) => ({ ...event })) as unknown as Event[],
   currentEvent: null,
   isLoading: false,
   error: null,
@@ -61,7 +61,7 @@ type EventsResponse = {
 }
 
 const buildFallbackEventsResponse = (): EventsResponse => ({
-  events: mockEvents.map((event) => ({ ...event })),
+  events: mockEvents.map((event) => ({ ...event })) as unknown as Event[],
   pagination: {
     page: 1,
     per_page: mockEvents.length,
@@ -172,5 +172,5 @@ const eventsSlice = createSlice({
 export const { addEventLocal, updateEventLocal } = eventsSlice.actions
 export default eventsSlice.reducer
 
-export type { Event }
+
 

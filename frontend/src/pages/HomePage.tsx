@@ -41,7 +41,7 @@ export default function HomePage() {
                 </p>
               </FadeContent>
               <div className="flex flex-wrap gap-4 pt-2">
-                <ScrollFloat intensity={12}>
+                <ScrollFloat>
                   <ClickSpark sparkColor="#A78BFA" sparkCount={14} sparkRadius={36}>
                     <StarBorder
                       as={Link}
@@ -106,19 +106,23 @@ export default function HomePage() {
       {/* Upcoming Events */}
       <section className="py-16 bg-muted-bg">
         <div className="container mx-auto px-4">
-          <FadeContent duration={600} containerClassName="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-            <h2 className="text-3xl font-heading font-semibold">Upcoming Events</h2>
-            <Link to="/events" className="text-primary hover:underline font-medium">
-              View All →
-            </Link>
+          <FadeContent duration={600}>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+              <h2 className="text-3xl font-heading font-semibold">Upcoming Events</h2>
+              <Link to="/events" className="text-primary hover:underline font-medium">
+                View All →
+              </Link>
+            </div>
           </FadeContent>
           {eventsLoading ? (
             <div className="text-center py-12">Loading events...</div>
           ) : upcomingEvents.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {upcomingEvents.map((event, index) => (
-                <FadeContent key={event.id} duration={600 + index * 100} containerClassName="h-full">
-                  <EventCard event={event} />
+                <FadeContent key={event.id} duration={600 + index * 100}>
+                  <div className="h-full">
+                    <EventCard event={event} />
+                  </div>
                 </FadeContent>
               ))}
             </div>
@@ -133,19 +137,23 @@ export default function HomePage() {
       {/* Recent News */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <FadeContent duration={600} containerClassName="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
-            <h2 className="text-3xl font-heading font-semibold">Latest News</h2>
-            <Link to="/news" className="text-primary hover:underline font-medium">
-              View All →
-            </Link>
+          <FadeContent duration={600}>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+              <h2 className="text-3xl font-heading font-semibold">Latest News</h2>
+              <Link to="/news" className="text-primary hover:underline font-medium">
+                View All →
+              </Link>
+            </div>
           </FadeContent>
           {newsLoading ? (
             <div className="text-center py-12">Loading news...</div>
           ) : recentNews.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {recentNews.map((post, index) => (
-                <FadeContent key={post.id} duration={600 + index * 100} containerClassName="h-full">
-                  <NewsCard post={post} />
+                <FadeContent key={post.id} duration={600 + index * 100}>
+                  <div className="h-full">
+                    <NewsCard post={post} />
+                  </div>
                 </FadeContent>
               ))}
             </div>

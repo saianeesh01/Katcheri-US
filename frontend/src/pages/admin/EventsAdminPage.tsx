@@ -331,7 +331,7 @@ export default function EventsAdminPage() {
                   </button>
                 </div>
                 <div className="space-y-3">
-                  {tickets.map((ticket, index) => (
+                  {tickets.map((ticket) => (
                     <div
                       key={ticket.tempId}
                       className="grid gap-3 rounded-2xl border border-primary/10 bg-primary/5 p-4 md:grid-cols-4"
@@ -457,11 +457,10 @@ export default function EventsAdminPage() {
                     </td>
                     <td className="px-4 py-3">
                       <span
-                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${
-                          event.status === 'published'
+                        className={`inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold ${event.status === 'published'
                             ? 'bg-green-500 text-white'
                             : 'bg-yellow-500 text-white'
-                        }`}
+                          }`}
                       >
                         {event.status || 'draft'}
                       </span>
